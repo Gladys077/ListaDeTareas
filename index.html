@@ -29,13 +29,12 @@
             <div class="titulo">Título</div>
             <div class="descripcion">Descripción</div>
             <div class="estados">Estado<br>
-                <span class="estado procesando">EN PROCESO </span>
-                <span class="estado listo">LISTO</span>
+                <span class="estado">EN PROCESO - LISTO </span>
             </div>
-            <div class="acciones" value="editar-eliminar">Acciones
+            <div class="acciones" value="editar-eliminar">Edita/Elimina
             </div>
         </div>
-        <div class="fila">
+        <div class="fila-tarea">
             <div class="new-celda-titulo">
                 <textarea class="new-titulo" type="text" placeholder="Título de la tarea"></textarea>
             </div>
@@ -44,11 +43,9 @@
             </div>
 
             <div class="new-estado">
-                <span>
-                    <input type="checkbox" class="check" value="procesando">
-                </span>
-                <span>
-                    <input type="checkbox" class="check" value="listo">
+                <span class="radio-container">
+                    <input type="radio" name="estado" class="check" value="procesando">
+                    <input type="radio" name="estado"  class="check" value="listo">
                 </span>
             </div>
 

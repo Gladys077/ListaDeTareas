@@ -17,7 +17,7 @@ body {
     justify-content:space-around;
     width: 900px;
     height: 50px;
-    margin: 0 auto;
+    margin: 3px auto;
     padding: 20px;
     background-color: rgb(221, 221, 221);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -94,44 +94,38 @@ body {
     text-align: center;
     justify-content: center;
     padding-top: 11px;
-    border: 1px solid black;
+    border: 1px solid rgb(42, 93, 244);
+    background-color: whitesmoke;
 }
 .descripcion {
     width: 490px;
     text-align: center;
     padding-top: 11px;
-    border: 1px solid black;
+    border: 1px solid rgb(42, 93, 244);
+    background-color: whitesmoke;
 }
 .estados {
     width: 90px;
-    padding: 0px 0px;
-    border: 1px solid black;
-    padding-top: 6px;
+    padding: 6px 0px 0px 0px;
+    border: 1px solid rgb(42, 93, 244);
+    background-color: whitesmoke;
 }
 .estado {
     width: 90px;
-    font-size: 6.5px;
-    align-items: start;
-    margin-left: 4px;
-    justify-content: space-between;
+    font-size: 8px;
 }
-.procesando {
-    color: rgb(7, 125, 204);
-}
-.listo {
-    color: rgb(166, 9, 187);
-}
-
 .acciones {
     width: 80px;
     text-align: center;
     justify-content: center;
     padding-top: 11px;
-    border: 1px solid black;
+    border: 1px solid rgb(42, 93, 244);
+    background-color: whitesmoke;
+    font-size: 11.5px;
 }
 
 /*FILA*/
-.fila {
+.fila-tarea {
     display: flex;
     text-align: center;
     align-items: center;
@@ -157,8 +151,7 @@ body {
     width: 488px;
     height: 102px;
     align-items: left;
-    padding-top: 5px;
-    padding-left: 5px;
+    padding: 5px 0px 0px 5px;
     border-bottom: 1px solid rgb(42, 93, 244);
     border-right: 1px solid rgb(42, 93, 244);
 }
@@ -176,10 +169,9 @@ body {
 .check {
     width: 25px;
     height: 25px;
-    margin-left: 3px;
-    margin-top: 10px;
-    margin-bottom: 70px;
+    margin: 10px 0px 70px 3px;
 }
+
 .new-acciones{
     width: 80px;
     height: 90px;
