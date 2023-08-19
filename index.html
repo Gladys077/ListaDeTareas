@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Lista de Tareas</title>
+</head>
+
+<body>
+    <div class="barra-navegacion">
+        <div class="tarea-agregar">
+            <h2>TAREAS</h2>
+            <button id="agregar">+</button>
+        </div>
+        <div class="filtrar">
+            <span>
+                <h4>Filtrar: </h4>
+            </span>
+            <button class="filtro-btn" data-filtro="todos">Todas</button>
+            <button class="filtro-btn" data-filtro="pendientes">Pendientes</button>
+            <button class="filtro-btn" data-filtro="completadas">Completadas</button>
+            </span>
+        </div>
+    </div>
+    <div class="tareas">
+        <div class="cabecera">
+            <div class="titulo">Título</div>
+            <div class="descripcion">Descripción</div>
+            <div class="estados">Estado<br>
+                <span class="estado procesando">EN PROCESO </span>
+                <span class="estado listo">LISTO</span>
+            </div>
+            <div class="acciones" value="editar-eliminar">Acciones
+            </div>
+        </div>
+        <div class="fila">
+            <div class="new-celda-titulo">
+                <textarea class="new-titulo" type="text" placeholder="Título de la tarea"></textarea>
+            </div>
+            <div class="new-celda-descripcion">            
+                <textarea class="new-descripcion" placeholder="Descripción de la tarea"></textarea>
+            </div>
+
+            <div class="new-estado">
+                <span>
+                    <input type="checkbox" class="check" value="procesando">
+                </span>
+                <span>
+                    <input type="checkbox" class="check" value="listo">
+                </span>
+            </div>
+
+            <div class="new-acciones">    
+                <button><img src="editar.png" alt="editar" class="iconos"></button>
+                <button><img src="eliminar.png" alt="eliminar" class="iconos"></button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

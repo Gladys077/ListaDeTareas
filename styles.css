@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #9bd3f6;
+}
+
+/*Barra de navegación*/
+.barra-navegacion {
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    width: 900px;
+    height: 50px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgb(221, 221, 221);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+.tarea-agregar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#agregar {
+    font-size: 40px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: white;
+    background-color: rgb(47, 90, 245);
+    border: 3px ridge black;
+    box-shadow:6px 4px 5px rgb(55, 53, 53);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#agregar:hover{
+    color: rgb(13, 242, 249);
+}
+#agregar:active{ 
+    color: rgb(13, 242, 249);
+    transform: scale(90%);
+}
+.filtrar {
+    display: flex;    
+    align-items: center;
+    justify-content: end;
+    gap: 15px;
+}
+.filtro-btn {
+    width: 100px;
+    padding: 5px 10px;
+    background-color: rgb(47, 90, 245);
+    border: 1.5px solid black;
+    box-shadow:6px 4px 5px rgb(55, 53, 53);
+    transition: transform 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+    border-radius: 5px;
+    color: white;
+}
+.filtro-btn:hover {
+    color: rgb(13, 242, 249);
+}
+.filtro-btn:active {
+    color: rgb(13, 242, 249);
+    transform: scale(90%);
+}
+
+/*Contenido de las tareas*/
+.tareas {
+    width: 928px;
+    margin: 0 auto;
+    padding: 10px 5px 5px 5px;
+    background-color: white;
+}
+.cabecera {
+    display: flex;
+    text-align: center;
+    justify-content: left;
+    font-weight: bold;
+    margin: 8px 10px;
+    gap: 4px;
+}
+.titulo {
+    width: 232px;
+    text-align: center;
+    justify-content: center;
+    padding-top: 11px;
+    border: 1px solid black;
+}
+.descripcion {
+    width: 490px;
+    text-align: center;
+    padding-top: 11px;
+    border: 1px solid black;
+}
+.estados {
+    width: 90px;
+    padding: 0px 0px;
+    border: 1px solid black;
+    padding-top: 6px;
+}
+.estado {
+    width: 90px;
+    font-size: 6.5px;
+    align-items: start;
+    margin-left: 4px;
+    justify-content: space-between;
+}
+.procesando {
+    color: rgb(7, 125, 204);
+}
+.listo {
+    color: rgb(166, 9, 187);
+}
+
+.acciones {
+    width: 80px;
+    text-align: center;
+    justify-content: center;
+    padding-top: 11px;
+    border: 1px solid black;
+}
+
+/*FILA*/
+.fila {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: left;
+    margin: 8px 10px;
+    gap: 4px;
+}
+.new-celda-titulo {
+    width: 234px;
+    height: 102px;
+    text-align: center;
+    padding-top: 5px;
+    border-bottom: 1px solid rgb(42, 93, 244);
+    border-right: 1px solid rgb(42, 93, 244);
+}
+.new-titulo {
+    border: none;
+    width: 228px;
+    height: 100px;
+    padding-left: 5px;
+}
+.new-celda-descripcion {
+    width: 488px;
+    height: 102px;
+    align-items: left;
+    padding-top: 5px;
+    padding-left: 5px;
+    border-bottom: 1px solid rgb(42, 93, 244);
+    border-right: 1px solid rgb(42, 93, 244);
+}
+.new-descripcion {
+    border: none;
+    width: 486px;
+    height: 100px;
+    margin: 0;
+}
+.new-estado {
+    border-bottom: 1px solid rgb(42, 93, 244);
+    border-right: 1px solid rgb(42, 93, 244);
+    width: 108px;
+}
+.check {
+    width: 25px;
+    height: 25px;
+    margin-left: 3px;
+    margin-top: 10px;
+    margin-bottom: 70px;
+}
+.new-acciones{
+    width: 80px;
+    height: 90px;
+    padding: 8px;
+    border-bottom: 1px solid rgb(42, 93, 244);
+    border-right: 1px solid rgb(42, 93, 244);
+}
+.iconos{
+    display: flex;
+    width: 20px;
+    height: 20px;
+    border: none;
+    margin: 2px;
+}
+.eliminar-btn, .editar-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.eliminar-btn {
+    color: red;
+}
+
+.editar-btn {
+    color: blue;
+}
