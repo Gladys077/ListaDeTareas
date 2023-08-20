@@ -18,9 +18,9 @@
             <span>
                 <h4>Filtrar: </h4>
             </span>
-            <button class="filtro-btn" data-filtro="todos">Todas</button>
-            <button class="filtro-btn" data-filtro="pendientes">Pendientes</button>
-            <button class="filtro-btn" data-filtro="completadas">Completadas</button>
+            <button class="filtro-btn todas" data-filtro="todas">TODAS</button>
+            <button class="filtro-btn enProceso" data-filtro="enProceso">EN PROCESO</button>
+            <button class="filtro-btn listas" data-filtro="listas">LISTAS</button>
             </span>
         </div>
     </div>
@@ -32,6 +32,46 @@
                 <span class="estado">EN PROCESO - LISTO </span>
             </div>
             <div class="acciones" value="editar-eliminar">Edita/Elimina
+            </div>
+        </div>
+        <div class="fila-tarea">
+            <div class="new-celda-titulo">
+                <textarea class="new-titulo" type="text" placeholder="Título de la tarea"></textarea>
+            </div>
+            <div class="new-celda-descripcion">            
+                <textarea class="new-descripcion" placeholder="Descripción de la tarea"></textarea>
+            </div>
+
+            <div class="new-estado">
+                <span class="radio-container">
+                    <input type="radio" name="estado" class="check" value="procesando">
+                    <input type="radio" name="estado"  class="check" value="listo">
+                </span>
+            </div>
+
+            <div class="new-acciones">    
+                <button><img src="editar.png" alt="editar" class="iconos"></button>
+                <button><img src="eliminar.png" alt="eliminar" class="iconos"></button>
+            </div>
+        </div>
+        <div class="fila-tarea">
+            <div class="new-celda-titulo">
+                <textarea class="new-titulo" type="text" placeholder="Título de la tarea"></textarea>
+            </div>
+            <div class="new-celda-descripcion">            
+                <textarea class="new-descripcion" placeholder="Descripción de la tarea"></textarea>
+            </div>
+
+            <div class="new-estado">
+                <span class="radio-container">
+                    <input type="radio" name="estado" class="check" value="procesando">
+                    <input type="radio" name="estado"  class="check" value="listo">
+                </span>
+            </div>
+
+            <div class="new-acciones">    
+                <button><img src="editar.png" alt="editar" class="iconos"></button>
+                <button><img src="eliminar.png" alt="eliminar" class="iconos"></button>
             </div>
         </div>
         <div class="fila-tarea">
