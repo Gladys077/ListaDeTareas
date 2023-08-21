@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <title>Lista de Tareas</title>
 </head>
-
+  
 <body>
     <div class="barra-navegacion">
         <div class="tarea-agregar">
@@ -31,7 +31,7 @@
             <div class="estados">Estado<br>
                 <span class="estado">EN PROCESO - LISTO </span>
             </div>
-            <div class="acciones" value="editar-eliminar">Edita/Elimina
+            <div class="acciones" value="editar-eliminar">Acciones
             </div>
         </div>
         <div class="fila-tarea">
@@ -41,7 +41,7 @@
             <div class="new-celda-descripcion">            
                 <textarea class="new-descripcion" placeholder="Descripción de la tarea"></textarea>
             </div>
-
+            
             <div class="new-estado">
                 <span class="radio-container">
                     <input type="radio" name="estado" class="check" value="procesando">
@@ -50,50 +50,12 @@
             </div>
 
             <div class="new-acciones">    
-                <button><img src="editar.png" alt="editar" class="iconos"></button>
-                <button><img src="eliminar.png" alt="eliminar" class="iconos"></button>
+                <button><img src="iconos/edit.png" alt="editar" class="editar-btn"></button>
+                <button><img src="iconos/trash.png" alt="eliminar" class="eliminar-btn"></button>
+                <button class="guardar-btn">Guardar</button>
             </div>
         </div>
-        <div class="fila-tarea">
-            <div class="new-celda-titulo">
-                <textarea class="new-titulo" type="text" placeholder="Título de la tarea"></textarea>
-            </div>
-            <div class="new-celda-descripcion">            
-                <textarea class="new-descripcion" placeholder="Descripción de la tarea"></textarea>
-            </div>
 
-            <div class="new-estado">
-                <span class="radio-container">
-                    <input type="radio" name="estado" class="check" value="procesando">
-                    <input type="radio" name="estado"  class="check" value="listo">
-                </span>
-            </div>
-
-            <div class="new-acciones">    
-                <button><img src="editar.png" alt="editar" class="iconos"></button>
-                <button><img src="eliminar.png" alt="eliminar" class="iconos"></button>
-            </div>
-        </div>
-        <div class="fila-tarea">
-            <div class="new-celda-titulo">
-                <textarea class="new-titulo" type="text" placeholder="Título de la tarea"></textarea>
-            </div>
-            <div class="new-celda-descripcion">            
-                <textarea class="new-descripcion" placeholder="Descripción de la tarea"></textarea>
-            </div>
-
-            <div class="new-estado">
-                <span class="radio-container">
-                    <input type="radio" name="estado" class="check" value="procesando">
-                    <input type="radio" name="estado"  class="check" value="listo">
-                </span>
-            </div>
-
-            <div class="new-acciones">    
-                <button><img src="editar.png" alt="editar" class="iconos"></button>
-                <button><img src="eliminar.png" alt="eliminar" class="iconos"></button>
-            </div>
-        </div>
     </div>
     <script src="script.js"></script>
 

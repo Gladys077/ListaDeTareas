@@ -1,63 +1,78 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const tablaTareas = document.getElementById('tabla-tareas');
-    const tbody = tablaTareas.querySelector('tbody');
-    const tituloInput = document.getElementById('titulo');
-    const descripcionTextarea = document.getElementById('descripcion');
-    const agregarBtn = document.getElementById('agregar');
-    const filtros = document.querySelectorAll('.filtro-btn');
+const agregarBtn = document.getElementById("agregar");
+const filtroBtns = document.querySelectorAll(".filtro-btn");
+const tareaContainer = document.querySelector(".tareas");
+let tareaCounter = 1;
 
-    agregarBtn.addEventListener('click', agregarTarea);
+function agregarTarea() {
+    tareaCounter++;
 
-    function agregarTarea() {
-        const titulo = tituloInput.value;
-        const descripcion = descripcionTextarea.value;
-        if (titulo && descripcion) {
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td>${titulo}</td>
-                <td>${descripcion}</td>
-                <td>Pendiente</td>
-                <td class="acciones">
-                    <button class="editar-btn">&#9998;</button>
-                    <button class="eliminar-btn">&#128465;</button>
-                </td>
-            `;
-            tbody.appendChild(newRow);
-            tituloInput.value = '';
-            descripcionTextarea.value = '';
-        }
-    }
+    const nuevaTarea = document.createElement("div");
+    nuevaTarea.classList.add("fila-tarea");
+    nuevaTarea.innerHTML = `
+        <div class="new-celda-titulo">
+            <textarea class="new-titulo" type="text" placeholder="Título de la tarea"></textarea>
+        </div>
+        <div class="new-celda-descripcion">            
+            <textarea class="new-descripcion" placeholder="Descripción de la tarea"></textarea>
+        </div>
 
-    // Filtrar tareas
-    filtros.forEach(filtro => {
-        filtro.addEventListener('click', () => {
-            const filtroSeleccionado = filtro.getAttribute('data-filtro');
-            const filas = Array.from(tbody.getElementsByTagName('tr'));
-            filas.forEach(fila => {
-                fila.style.display = 'table-row';
-                if (filtroSeleccionado !== 'todos') {
-                    const estado = fila.querySelector('td:nth-child(3)').textContent;
-                    if (estado.toLowerCase() !== filtroSeleccionado) {
-                        fila.style.display = 'none';
-                    }
-                }
-            });
-        });
+        <div class="new-estado">
+            <span class="radio-container">
+                <input type="radio" name="estado_${tareaCounter}" class="check" value="procesando">
+                <input type="radio" name="estado_${tareaCounter}"  class="check" value="listo">
+            </span>
+        </div>
+
+        <div class="new-acciones">    
+            <button><img src="iconos/edit.png" alt="editar" class="editar-btn"></button>
+            <button><img src="iconos/trash.png" alt="eliminar" class="eliminar-btn"></button>
+            <button class="guardar-btn">Guardar</button>
+        </div>
+    `;
+
+    tareaContainer.appendChild(nuevaTarea);
+
+    const editarBtn = nuevaTarea.querySelector(".editar-btn");
+    const eliminarBtn = nuevaTarea.querySelector(".eliminar-btn");
+    const guardarBtn = nuevaTarea.querySelector(".guardar-btn")
+
+    editarBtn.addEventListener("click", editarTarea);
+    eliminarBtn.addEventListener("click", eliminarTarea);
+}
+
+function editarTarea(event) {
+    const tareaActual = event.target.closest(".fila-tarea");
+    const tituloInput = tareaActual.querySelector(".new-titulo");
+    const descripcionInput = tareaActual.querySelector(".new-descripcion");
+    const guardarBtn = tareaActual.querySelector(".guardar-btn");
+
+    guardarBtn.addEventListener("click", () => {
+        const nuevoTitulo = tituloInput.value;
+        const nuevaDescripcion = descripcionInput.value;
     });
+}
 
-    tbody.addEventListener('click', e => {
-        if (e.target.classList.contains('eliminar-btn')) {
-            const fila = e.target.closest('tr');
-            fila.remove();
-        }
-        if (e.target.classList.contains('editar-btn')) {
-            const fila = e.target.closest('tr');
-            const titulo = fila.querySelector('td:nth-child(1)').textContent;
-            const descripcion = fila.querySelector('td:nth-child(2)').textContent;
-            tituloInput.value = titulo;
-            descripcionTextarea.value = descripcion;
-            fila.remove();
+function eliminarTarea(event) {
+    const tareaActual = event.target.closest(".fila-tarea");
+    tareaContainer.removeChild(tareaActual);
+}
+
+function filtrarTareas(event) {
+    const filtro = event.target.getAttribute("data-filtro");
+
+    tareaContainer.querySelectorAll(".fila-tarea").forEach(tarea => {
+        tarea.style.display = "flex";
+
+        if (filtro === "enProceso" && tarea.querySelector(".check:checked").value !== "procesando") {
+            tarea.style.display = "none";
+        } else if (filtro === "listas" && tarea.querySelector(".check:checked").value !== "listo") {
+            tarea.style.display = "none";
         }
     });
+}
+
+agregarBtn.addEventListener("click", agregarTarea);
+
+filtroBtns.forEach(btn => {
+    btn.addEventListener("click", filtrarTareas);
 });
-
