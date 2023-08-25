@@ -1,10 +1,14 @@
 const agregarBtn = document.getElementById("agregar");
 const filtroBtns = document.querySelectorAll(".filtro-btn");
 const tareaContainer = document.querySelector(".tareas");
-let tareaCounter = 1;
+const tareas = [];
+let tareaCounter = 0;
 
 function agregarTarea() {
     tareaCounter++;
+
+    var divFondo = document.getElementById("empty");
+    divFondo.style.display = "none";
 
     const nuevaTarea = document.createElement("div");
     nuevaTarea.classList.add("fila-tarea");
@@ -34,27 +38,46 @@ function agregarTarea() {
 
     const editarBtn = nuevaTarea.querySelector(".editar-btn");
     const eliminarBtn = nuevaTarea.querySelector(".eliminar-btn");
-    const guardarBtn = nuevaTarea.querySelector(".guardar-btn")
+    const guardarBtn = nuevaTarea.querySelector(".guardar-btn");
 
     editarBtn.addEventListener("click", editarTarea);
     eliminarBtn.addEventListener("click", eliminarTarea);
+    guardarBtn.addEventListener("click", guardarTarea);
 }
 
 function editarTarea(event) {
     const tareaActual = event.target.closest(".fila-tarea");
     const tituloInput = tareaActual.querySelector(".new-titulo");
     const descripcionInput = tareaActual.querySelector(".new-descripcion");
-    const guardarBtn = tareaActual.querySelector(".guardar-btn");
+    const editarBtn = tareaActual.querySelector(".editar-btn");
 
+    editarBtn.addEventListener("click", () => {
+        tituloInput.readOnly = false;
+        descripcionInput.readOnly = false;
+    });
+    const guardarBtn = tareaActual.querySelector(".guardar-btn");
     guardarBtn.addEventListener("click", () => {
         const nuevoTitulo = tituloInput.value;
         const nuevaDescripcion = descripcionInput.value;
+        // Resto de la lógica para guardar los valores en la BBDD
+
+        tituloInput.value = nuevoTitulo;
+        descripcionInput.value = nuevaDescripcion;
+
+        tituloInput.readOnly = true;
+        descripcionInput.readOnly = true;
     });
 }
 
 function eliminarTarea(event) {
     const tareaActual = event.target.closest(".fila-tarea");
     tareaContainer.removeChild(tareaActual);
+
+    const tareasRestantes = tareaContainer.querySelectorAll(".fila-tarea");
+    if (tareasRestantes.length === 0) {
+        const divFondo = document.getElementById("empty");
+        divFondo.style.display = "block";
+    }
 }
 
 function filtrarTareas(event) {
@@ -76,3 +99,21 @@ agregarBtn.addEventListener("click", agregarTarea);
 filtroBtns.forEach(btn => {
     btn.addEventListener("click", filtrarTareas);
 });
+
+function guardarTarea(event) {
+    const tareaActual = event.target.closest(".fila-tarea");
+    const tituloInput = tareaActual.querySelector(".new-titulo");
+    const descripcionInput = tareaActual.querySelector(".new-descripcion");
+    const estadoInput = tareaActual.querySelector(".check:checked");
+
+    const nuevaTarea = {
+        titulo: tituloInput.value,
+        descripcion: descripcionInput.value,
+        estado: estadoInput.value
+    };
+
+    tareas.push(nuevaTarea);
+    
+    tituloInput.readOnly = true;
+    descripcionInput.readOnly = true;
+}

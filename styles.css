@@ -92,7 +92,9 @@ body {
     width: 928px;
     margin: 0 auto;
     padding: 10px 5px 5px 5px;
-    background-color: white;
+    background-color: rgba(252, 255, 255);
+    background-repeat: repeat-y;
+    background-size: auto;
 }
 .cabecera {
     display: flex;
@@ -135,7 +137,7 @@ body {
     border-top-right-radius: 15px;
 }
 
-/*FILA*/
+/*FILAS*/
 .fila-tarea {
     display: flex;
     text-align: center;
@@ -206,7 +208,9 @@ body {
     color: white;
     transform: scale(130%);
     box-shadow:6px 4px 5px rgb(55, 53, 53);
+    transition: transform 1s, box-shadow 0.3s;
 }
+
 .guardar-btn {
     width: 60px;
     height: 25px;
@@ -224,4 +228,14 @@ body {
     color: #fff;
     transform: scale(110%);
     box-shadow: 6px 4px 3px rgb(157, 151, 151);
+}
+
+#empty {
+    width: 928px;
+    height: 100vh;
+    background-color:  rgba(187, 70, 214, 1);
+    background-image: url("iconos/bandeja.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0.2;
 }
