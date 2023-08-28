@@ -1,9 +1,7 @@
 const agregarBtn = document.getElementById("agregar");
 const filtroBtns = document.querySelectorAll(".filtro-btn");
 const tareaContainer = document.querySelector(".tareas");
-const tareas = [];
 let tareaCounter = 0;
-
 
 class Tarea {
     constructor(titulo, descripcion, estado) {
@@ -12,8 +10,6 @@ class Tarea {
         this.estado = estado;
     }
 }
-
-
 
 function agregarTarea() {
     tareaCounter++;
@@ -94,28 +90,15 @@ function eliminarTarea(event) {
 function filtrarTareas(event) {
     const filtro = event.target.getAttribute("data-filtro");
 
-    const tareasFiltradas = Array.from(tareaContainer.querySelectorAll(".fila-tarea"));
-    
-    if (filtro === "enProceso") {
-        tareasFiltradas.forEach(tarea => {
-            const estadoCheckbox = tarea.querySelector(".check:checked");
-            tarea.style.display = estadoCheckbox.value === "procesando" ? "flex" : "none";
-        });
-    } else if (filtro === "listas") {
-        tareasFiltradas.forEach(tarea => {
-            const estadoCheckbox = tarea.querySelector(".check:checked");
-            tarea.style.display = estadoCheckbox.value === "listo" ? "flex" : "none";
-        });
-    }
-    const tareasRestantes = tareasFiltradas.filter (tarea => tarea.style.display === "flex");
+    tareaContainer.querySelectorAll(".fila-tarea").forEach(tarea => {
+        tarea.style.display = "flex";
 
-    if (tareasRestantes.length === 0) {
-        const divFondo = document.getElementById("empty");
-        divFondo.style.display = "block";
-    } else {
-        const divFondo = document.getElementById("empty");
-        divFondo.style.display = "none";
-    }
+        if (filtro === "enProceso" && tarea.querySelector(".check:checked").value !== "procesando") {
+            tarea.style.display = "none";
+        } else if (filtro === "listas" && tarea.querySelector(".check:checked").value !== "listo") {
+            tarea.style.display = "none";
+        }
+    });
 }
 
 agregarBtn.addEventListener("click", agregarTarea);
@@ -129,7 +112,7 @@ function guardarTarea(event) {
     const tituloInput = tareaActual.querySelector(".new-titulo");
     const descripcionInput = tareaActual.querySelector(".new-descripcion");
     const estadoInput = tareaActual.querySelector(".check:checked");
-
+    const tareas = [];
     const nuevaTarea = new Tarea (
         tituloInput.value,
         descripcionInput.value,
@@ -141,44 +124,43 @@ function guardarTarea(event) {
     tituloInput.readOnly = true;
     descripcionInput.readOnly = true;
 }
-/* 
-function mostrarTareas() {
-    tareaContainer.innerHTML = ""; // Limpia el contenido actual
 
-    tareas.forEach(tarea => {
+function mostrarTareas() {
+    tareaContainer.innerHTML = "";
+
+    tareas.forEach(tarea =>{
         const nuevaTarea = document.createElement("div");
         nuevaTarea.classList.add("fila-tarea");
         nuevaTarea.innerHTML = `
-            <div class="new-celda-titulo">
-                <textarea class="new-titulo" type="text">${tarea.titulo}</textarea>
-            </div>
-            <div class="new-celda-descripcion">
-                <textarea class="new-descripcion">${tarea.descripcion}</textarea>
-            </div>
-            <div class="new-estado">
-                <span class="radio-container">
-                    <input type="radio" name="estado_${tareaCounter}" class="check" value="procesando">
-                    <input type="radio" name="estado_${tareaCounter}" class="check" value="listo">
-                </span>
-            </div>
-            <div class="new-acciones">
-                <button><img src="iconos/edit.png" alt="editar" class="editar-btn"></button>
-                <button><img src="iconos/trash.png" alt="eliminar" class="eliminar-btn"></button>
-                <button class="guardar-btn">Guardar</button>
-            </div>
-        `;
+        <div class="new-celda-titulo">
+            <textarea class="new-titulo" type="text">${tarea.titulo}</textarea>
+        </div>
+        <div class="new-celda-descripcion">
+            <textarea class="new-descripcion">${tarea.descripcion}</textarea>
+        </div>
+        <div class="new-estado">
+            <span class="radio-container">
+                <input type="radio" name="estado_${tareaCounter}" class="check" value="procesando">
+                <input type="radio" name="estado_${tareaCounter}" class="check" value="listo">
+            </span>
+        </div>
+        <div class="new-acciones">
+            <button><img src="iconos/edit.png" alt="editar" class="editar-btn"></button>
+            <button><img src="iconos/trash.png" alt="eliminar" class="eliminar-btn"></button>
+            <button class="guardar-btn">Guardar</button>
+        </div>
+    `;
 
-        tareaContainer.appendChild(nuevaTarea);
+    tareaContainer.appendChild(nuevaTarea);
 
-        const tituloInput = nuevaTarea.querySelector(".new-titulo");
-        const descripcionInput = nuevaTarea.querySelector(".new-descripcion");
-        const estadoInput = nuevaTarea.querySelector(".check");
+    const tituloInput = nuevaTarea.querySelector(".new-titulo");
+    const descripcionInput = nuevaTarea.querySelector(".new-descripcion");
+    const estadoInput = nuevaTarea.querySelector(".check");
 
-        tituloInput.value = tarea.titulo;
-        descripcionInput.value = tarea.descripcion;
-        estadoInput.value = tarea.estado;
+    tituloInput.value = tarea.titulo;
+    descripcionInput.value = tarea.descripcion;
+    estadoInput.value = tarea.estado;
     });
 }
 
-mostrarTareas(); */
-window.addEventListener("load", Inicio, false); //para localStorage
+mostrarTareas()

@@ -111,6 +111,8 @@ body {
     padding-top: 11px;
     border: 1.5px ridge rgb(159, 12, 237);
     border-top-left-radius: 15px;
+    background-color: rgb(159, 12, 237);
+    color: white
 }
 .descripcion {
     width: 490px;
@@ -118,11 +120,15 @@ body {
     padding-top: 11px;
     border: 4px ridge rgb(white);
     border: 1.5px ridge rgb(159, 12, 237);
+    background-color: rgb(159, 12, 237);
+    color: white
 }
 .estados {
     width: 90px;
     padding: 6px 0px 0px 0px;
     border: 1.5px ridge rgb(159, 12, 237);
+    background-color: rgb(159, 12, 237);
+    color: white
 }
 .estado {
     width: 90px;
@@ -135,6 +141,8 @@ body {
     padding-top: 11px;
     border: 1.5px ridge rgb(159, 12, 237);
     border-top-right-radius: 15px;
+    background-color: rgb(159, 12, 237);
+    color: white
 }
 
 /*FILAS*/
